@@ -64,6 +64,22 @@ spec:
 - **PyCharm** for Python-based K8s tools
 - **WebStorm** for frontend K8s dashboards
 
+#### **VS Code with Extensions**
+```bash
+# Essential K8s Extensions for Windows/Linux
+- Kubernetes (ms-kubernetes-tools.vscode-kubernetes-tools)
+- YAML (redhat.vscode-yaml)
+- Docker (ms-azuretools.vscode-docker)
+- GitLens (eamodio.gitlens)
+
+# Installation (cross-platform)
+# Via VS Code Extensions marketplace or command line:
+code --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+code --install-extension redhat.vscode-yaml
+code --install-extension ms-azuretools.vscode-docker
+code --install-extension eamodio.gitlens
+```
+
 ### Browser-Based AI Tools
 
 #### **ChatGPT** (Your Current Tool)
@@ -89,12 +105,16 @@ spec:
 
 #### **Kubectl AI Plugin**
 ```bash
-# Install kubectl-ai
+# Linux/macOS Installation
 curl -L https://github.com/sozercan/kubectl-ai/releases/latest/download/kubectl-ai-linux-amd64 -o kubectl-ai
 chmod +x kubectl-ai
 sudo mv kubectl-ai /usr/local/bin/
 
-# Usage examples
+# Windows Installation (PowerShell)
+Invoke-WebRequest -Uri "https://github.com/sozercan/kubectl-ai/releases/latest/download/kubectl-ai-windows-amd64.exe" -OutFile "kubectl-ai.exe"
+Move-Item kubectl-ai.exe "C:\Windows\System32\kubectl-ai.exe"
+
+# Usage examples (cross-platform)
 kubectl ai "create a deployment for nginx with 3 replicas"
 kubectl ai "show me all pods with high CPU usage"
 kubectl ai "generate a service for my-app deployment"
@@ -102,8 +122,14 @@ kubectl ai "generate a service for my-app deployment"
 
 #### **K9s with AI Integration**
 ```bash
-# Install K9s
+# Linux/macOS Installation
 curl -sS https://webinstall.dev/k9s | bash
+
+# Windows Installation (PowerShell)
+iwr https://webinstall.dev/k9s.ps1 | iex
+
+# Alternative Windows Installation (Chocolatey)
+choco install k9s
 
 # AI-enhanced features
 - Resource monitoring with AI insights
@@ -123,6 +149,17 @@ curl -sS https://webinstall.dev/k9s | bash
 - Performance monitoring
 - Multi-cluster management
 - Built-in terminal and logs viewer
+
+# Installation
+# Linux/macOS
+curl -L https://lens-binaries.s3-eu-west-1.amazonaws.com/ide/latest/linux/lens-5.5.3-linux.AppImage -o lens
+chmod +x lens
+./lens
+
+# Windows
+# Download from: https://lens-binaries.s3-eu-west-1.amazonaws.com/ide/latest/windows/Lens%20Setup%205.5.3.exe
+# Or use Chocolatey
+choco install lens
 ```
 
 ### **Kubernetes Dashboard with AI**
@@ -139,10 +176,17 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/a
 
 ### **Skaffold with AI Integration**
 ```bash
-# Install Skaffold
+# Linux/macOS Installation
 curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
 chmod +x skaffold
 sudo mv skaffold /usr/local/bin/
+
+# Windows Installation (PowerShell)
+Invoke-WebRequest -Uri "https://storage.googleapis.com/skaffold/releases/latest/skaffold-windows-amd64.exe" -OutFile "skaffold.exe"
+Move-Item skaffold.exe "C:\Windows\System32\skaffold.exe"
+
+# Alternative Windows Installation (Chocolatey)
+choco install skaffold
 
 # AI-enhanced development workflow
 skaffold dev --ai-suggestions
@@ -150,6 +194,17 @@ skaffold dev --ai-suggestions
 
 ### **Kustomize with AI**
 ```bash
+# Installation
+# Linux/macOS
+curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+
+# Windows (PowerShell)
+Invoke-WebRequest -Uri "https://github.com/kubernetes-sigs/kustomize/releases/latest/download/kustomize_windows_amd64.exe" -OutFile "kustomize.exe"
+Move-Item kustomize.exe "C:\Windows\System32\kustomize.exe"
+
+# Alternative Windows Installation (Chocolatey)
+choco install kustomize
+
 # AI-powered Kustomize overlays
 kustomize build --ai-suggestions base/
 kustomize build --ai-security-scan overlays/prod/
@@ -240,6 +295,15 @@ kubectl ai "deploy this application to the dev environment with proper rollback 
 helm repo add k8sgpt https://charts.k8sgpt.ai/
 helm install k8sgpt k8sgpt/k8sgpt-operator
 
+# Linux/macOS Installation
+curl -L https://github.com/k8sgpt-ai/k8sgpt/releases/latest/download/k8sgpt-linux-amd64 -o k8sgpt
+chmod +x k8sgpt
+sudo mv k8sgpt /usr/local/bin/
+
+# Windows Installation (PowerShell)
+Invoke-WebRequest -Uri "https://github.com/k8sgpt-ai/k8sgpt/releases/latest/download/k8sgpt-windows-amd64.exe" -OutFile "k8sgpt.exe"
+Move-Item k8sgpt.exe "C:\Windows\System32\k8sgpt.exe"
+
 # Usage
 k8sgpt analyze
 k8sgpt explain <resource>
@@ -248,9 +312,27 @@ k8sgpt explain <resource>
 #### **Security & Compliance**
 ```bash
 # Trivy for vulnerability scanning
+# Linux/macOS Installation
+curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
+# Windows Installation (PowerShell)
+Invoke-WebRequest -Uri "https://github.com/aquasecurity/trivy/releases/latest/download/trivy_0.0.1_Windows-64bit.zip" -OutFile "trivy.zip"
+Expand-Archive trivy.zip -DestinationPath "C:\Windows\System32"
+
+# Alternative Windows Installation (Chocolatey)
+choco install trivy
+
+# Usage
 trivy k8s deployment/my-app
 
 # Checkov for infrastructure as code
+# Linux/macOS Installation
+pip install checkov
+
+# Windows Installation
+pip install checkov
+
+# Usage
 checkov -f deployment.yaml
 ```
 
@@ -261,6 +343,17 @@ helm install prometheus prometheus-community/kube-prometheus-stack
 
 # Grafana with AI-powered dashboards
 kubectl port-forward svc/prometheus-grafana 3000:80
+
+# Lens IDE Installation
+# Linux/macOS
+curl -L https://lens-binaries.s3-eu-west-1.amazonaws.com/ide/latest/linux/lens-5.5.3-linux.AppImage -o lens
+chmod +x lens
+./lens
+
+# Windows
+# Download from: https://lens-binaries.s3-eu-west-1.amazonaws.com/ide/latest/windows/Lens%20Setup%205.5.3.exe
+# Or use Chocolatey
+choco install lens
 ```
 
 ---
@@ -381,6 +474,19 @@ kubectl ai "create a deployment for redis with persistent volume"
 
 # AI-powered debugging
 kubectl ai "analyze the logs from my-app pod"
+
+# Cross-platform kubectl installation
+# Linux/macOS
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+
+# Windows (PowerShell)
+Invoke-WebRequest -Uri "https://dl.k8s.io/release/v1.28.0/bin/windows/amd64/kubectl.exe" -OutFile "kubectl.exe"
+Move-Item kubectl.exe "C:\Windows\System32\kubectl.exe"
+
+# Alternative Windows Installation (Chocolatey)
+choco install kubernetes-cli
 ```
 
 ### **Cursor IDE Shortcuts**
@@ -393,6 +499,18 @@ Cmd/Ctrl + K: "Optimize this deployment for production"
 
 # Debug K8s issues
 Cmd/Ctrl + K: "Why is this pod failing to start?"
+
+# Cross-platform installation
+# Linux/macOS
+# Download from: https://cursor.sh/
+# Or use package managers:
+# Ubuntu/Debian: sudo apt install cursor
+# macOS: brew install --cask cursor
+
+# Windows
+# Download from: https://cursor.sh/
+# Or use Chocolatey
+choco install cursor
 ```
 
 ### **ChatGPT Prompts**
@@ -405,6 +523,11 @@ Cmd/Ctrl + K: "Why is this pod failing to start?"
 
 # Troubleshooting
 "How do I debug a pod that's stuck in pending state?"
+
+# Cross-platform setup
+"Help me set up kubectl on Windows PowerShell"
+"Generate a PowerShell script to install Kubernetes tools"
+"Create a batch file for Windows to install K8s tools"
 ```
 
 ---
@@ -420,6 +543,60 @@ Cmd/Ctrl + K: "Why is this pod failing to start?"
 1. **K8sGPT** - Kubernetes-specific AI troubleshooting
 2. **Lens IDE** - K8s visualization and management
 3. **Trivy** - Security vulnerability scanning
+
+### **Cross-Platform Setup Scripts**
+
+#### **Windows PowerShell Setup Script**
+```powershell
+# install-k8s-tools.ps1
+Write-Host "Installing Kubernetes tools for Windows..."
+
+# Install Chocolatey if not present
+if (!(Get-Command choco -ErrorAction SilentlyContinue)) {
+    Set-ExecutionPolicy Bypass -Scope Process -Force
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
+    iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+}
+
+# Install tools
+choco install kubernetes-cli -y
+choco install k9s -y
+choco install lens -y
+choco install skaffold -y
+choco install kustomize -y
+choco install trivy -y
+
+Write-Host "Kubernetes tools installed successfully!"
+```
+
+#### **Linux/macOS Setup Script**
+```bash
+#!/bin/bash
+# install-k8s-tools.sh
+
+echo "Installing Kubernetes tools for Linux/macOS..."
+
+# Install kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+
+# Install k9s
+curl -sS https://webinstall.dev/k9s | bash
+
+# Install kustomize
+curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+
+# Install skaffold
+curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+chmod +x skaffold
+sudo mv skaffold /usr/local/bin/
+
+# Install trivy
+curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
+echo "Kubernetes tools installed successfully!"
+```
 
 ### **Best Approach for K8s Tasks**
 1. **Plan** - Use AI to understand requirements
