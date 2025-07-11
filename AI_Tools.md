@@ -46,22 +46,6 @@ This guide focuses on **Cursor IDE** with essential extensions for Kubernetes de
 "Validate this Kubernetes manifest for security issues"
 ```
 
-#### **Cross-Platform Installation**
-```bash
-# Linux/macOS
-# Download from: https://cursor.sh/
-# Or use package managers:
-# Ubuntu/Debian: sudo apt install cursor
-# macOS: brew install --cask cursor
-
-# Windows
-# Download from: https://cursor.sh/
-# Or use Chocolatey
-choco install cursor
-```
-
-### **Additional AI Assistance (Optional)**
-
 #### **ChatGPT for Complex Scenarios**
 ```bash
 # Use ChatGPT when Cursor AI needs additional context
@@ -80,6 +64,16 @@ choco install cursor
 
 ### **Essential CLI Tools (Minimal Setup)**
 
+#### Installing Chocolatey (Windows)
+If you do not have Chocolatey installed, run the following command in an **Administrator PowerShell** window:
+
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force
+iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
+
+---
+
 #### **Kubectl - Core Kubernetes CLI**
 ```bash
 # Cross-platform kubectl installation
@@ -90,10 +84,9 @@ sudo mv kubectl /usr/local/bin/
 
 # Windows (PowerShell)
 Invoke-WebRequest -Uri "https://dl.k8s.io/release/v1.28.0/bin/windows/amd64/kubectl.exe" -OutFile "kubectl.exe"
-Move-Item kubectl.exe "C:\Windows\System32\kubectl.exe"
 
 # Alternative Windows Installation (Chocolatey)
-choco install kubernetes-cli
+choco install kubernetes-cli -y
 ```
 
 #### **K9s - Terminal UI (Optional)**
@@ -468,3 +461,5 @@ echo "- GitLens (eamodio.gitlens)"
 6. **Monitor** - Use Lens IDE for cluster visualization
 
 **Remember**: Always validate AI-generated code and test thoroughly in lower environments before production deployment.
+
+---
