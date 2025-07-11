@@ -82,9 +82,6 @@ curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stabl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin/
 
-# Windows (PowerShell)
-Invoke-WebRequest -Uri "https://dl.k8s.io/release/v1.28.0/bin/windows/amd64/kubectl.exe" -OutFile "kubectl.exe"
-
 # Alternative Windows Installation (Chocolatey)
 choco install kubernetes-cli -y
 ```
@@ -93,9 +90,6 @@ choco install kubernetes-cli -y
 ```bash
 # Linux/macOS Installation
 curl -sS https://webinstall.dev/k9s | bash
-
-# Windows Installation (PowerShell)
-iwr https://webinstall.dev/k9s.ps1 | iex
 
 # Alternative Windows Installation (Chocolatey)
 choco install k9s
@@ -125,14 +119,6 @@ chmod +x lens
 # Or use Chocolatey
 choco install lens
 ```
-
-### **Kubernetes Dashboard** (Optional)
-```bash
-# Standard dashboard installation
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
-```
-
----
 
 ## 🧠 3. Codebase Understanding & Best Approaches
 
